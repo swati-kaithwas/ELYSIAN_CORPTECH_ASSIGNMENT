@@ -23,7 +23,18 @@ const user = new Schema({
         trim:true,
         index:true,
         default:""
+    },
+    userToken:{
+        type:String,
+        default:"",
+
+    },
+    user_role:{
+        type:String,
+        enum:["user","creator","admin"],
+        default:"user"
     }
+
 },
 {timestamps: true}
 )

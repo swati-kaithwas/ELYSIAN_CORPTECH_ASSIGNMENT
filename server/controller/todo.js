@@ -1,6 +1,10 @@
 const sendResponse =require("../helper/responseSender");
 const Todoservice=require("../service/todo")
 const createTodo =async(req,res)=>{
+    /*
+    1. create todo
+    2. title ,description is required
+    */
     try{
         let {title,description}= req.body
         if(!title||!description)
@@ -35,6 +39,10 @@ const createTodo =async(req,res)=>{
     }
 }
 const getAllTodo = async(req,res)=>{
+    /*
+    1. get all todo
+    */
+
     try{
         const data= await Todoservice.findAll(req.query);
         if(!data)
@@ -58,6 +66,10 @@ const getAllTodo = async(req,res)=>{
 }
 const UpadteTodo = async(req,res)=>{
     try{
+        /*
+        1. id is required
+        2. upadte todo title,description
+        */
     let {id,title,description} = req.body;
     if(!id) return sendResponse(res,400,{
         status:false,
@@ -73,12 +85,12 @@ const UpadteTodo = async(req,res)=>{
    console.log("content",content);
    if(!content) return sendResponse(400,res,{
     status:false,
-    message:"profile not update !"
+    message:"todo not update !"
    })
-    return sendResponse(200,res,{
+    return res.send({
     status:true,
     data:content,
-    message:"sucessfully update profile!"
+    message:"sucessfully update todo!"
 })
     }
 
@@ -91,6 +103,10 @@ const UpadteTodo = async(req,res)=>{
     }
 }
 const getTodoById = async(req,res)=>{
+    /*
+    1.id is required
+    2. using id find todo
+    */
     try{
        const {id} = req.body;
         if(!id) return sendResponse(res,400,{
@@ -120,6 +136,10 @@ const getTodoById = async(req,res)=>{
     }
 }
 const deleteTodo = async(req,res)=>{
+    /*
+    1. delete by id
+    2. id is required
+    */
     try{
        const {id} = req.body;
         if(!id) return sendResponse(res,400,{
