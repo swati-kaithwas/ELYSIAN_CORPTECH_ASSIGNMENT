@@ -78,7 +78,8 @@ try{
 
  const updateTodo = async (id,obj)=>{
     try{
-        const data = await ToDo.findByIdAndUpdate({_id:id},{$set:obj},{new:true})
+        const Id = id.replace(":", "");
+        const data = await ToDo.findByIdAndUpdate({_id:Id},{$set:obj},{new:true})
         return data;
     
       
@@ -89,7 +90,11 @@ try{
      }
      const removedata=async(id)=>{
         try{
-            var data = await ToDo.findByIdAndDelete({_id:id})
+            // console.log("id111",id)
+            const Id = id.replace(":", "");
+            // console.log("id111",Id)
+            const data = await ToDo.findByIdAndDelete(Id) 
+            // console.log("data",data)
               return data;
         }catch(error){
             console.log(error);

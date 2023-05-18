@@ -12,9 +12,9 @@ router.get('/', function(req, res, next) {
 router.post("/createtodo",TodoController.createTodo)
 
 router.get("/getalltodo",TodoController.getAllTodo);
-router.put("/updatetodo",TodoController.UpadteTodo);
+router.put("/updatetodo/:id",TodoController.UpadteTodo);
 router.post("/getTodoById",TodoController.getTodoById);
 
-router.delete("/deleteTodo",TodoController.deleteTodo)
+router.delete("/deleteTodo/:id",TodoController.deleteTodo)
 
 module.exports = router;
